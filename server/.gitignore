@@ -4,6 +4,7 @@
 /.yarn
 /basic-project/node_modules
 /basic-project/.yarn
+.env
 
 # Quasar core related directories
 .quasar
