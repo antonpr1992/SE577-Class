@@ -1,10 +1,10 @@
 import { FastifyHttpProxyOptions } from '@fastify/http-proxy';
 
-export function GetGHGists(GHAccessToken: string | undefined) : FastifyHttpProxyOptions {
+export function GetGHProxySecureOptions(GHAccessToken: string | undefined) : FastifyHttpProxyOptions {
     return {
-        upstream: 'https://api.github.com/users/antonpr1992/gists',
-        prefix: 'ghgists', 
-        httpMethods: ['GET'],
+        upstream: 'https://api.github.com',
+        prefix: 'ghsecure', 
+        httpMethods: ['GET', 'POST'],
         replyOptions: {
             rewriteRequestHeaders: (origReq, headers) => {
                 return {
@@ -13,6 +13,14 @@ export function GetGHGists(GHAccessToken: string | undefined) : FastifyHttpProxy
                 }
             } 
         } 
+    }
+}
+
+export function GetGHProxyOptions() : FastifyHttpProxyOptions {
+    return {
+        upstream: 'https://api.github.com',
+        prefix: 'ghproxy', 
+        httpMethods: ['GET', 'POST']
     }
 }
 

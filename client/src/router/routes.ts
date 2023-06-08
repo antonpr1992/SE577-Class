@@ -22,9 +22,9 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/MyRepos.vue') }],
   },
   {
-    path: '/otherApp',
+    path: '/gists',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/OtherApp.vue') }],
+    children: [{ path: '', component: () => import('pages/MyGists.vue') }],
   },
 
   // Always leave this as last one,

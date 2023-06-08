@@ -2,7 +2,7 @@ import  {RepoData}  from "./ReposDb";
 import fastify, {RequestGenericInterface} from "fastify";
 import fastifyHttpProxy from "@fastify/http-proxy";
 import dotenv from 'dotenv';
-import {GetGHGists } from "./proxy";
+import {GetGHProxySecureOptions, GetGHProxyOptions } from "./proxy";
 
 import cors from '@fastify/cors';
 
@@ -10,8 +10,11 @@ dotenv.config();
 
 const server = fastify()
 
-let proxyGists = GetGHGists(process.env.GH_ACCESS_TOKEN)
-server.register(fastifyHttpProxy, proxyGists)
+let proxyOptsSecure = GetGHProxySecureOptions(process.env.GH_ACCESS_TOKEN)
+server.register(fastifyHttpProxy, proxyOptsSecure)
+
+let proxyOpts = GetGHProxyOptions()
+server.register(fastifyHttpProxy, proxyOpts)
 
 //setup CORS - this will be necessary for API requests from a VUE or any SPA app 
 server.register(cors, {

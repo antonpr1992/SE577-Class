@@ -100,7 +100,7 @@ const options = [
   { label: 'Log In', value: 'one', to: '/login' },
   { label: 'Info About Me', value: 'two', to: '/info' },
   { label: 'My Repos', value: 'three', to: '/repos' },
-  { label: 'Other App', value: 'four', to: '/otherApp' },
+  { label: 'My Gists', value: 'four', to: '/gists' },
 ];
 
 function toggleLeftDrawer() {
